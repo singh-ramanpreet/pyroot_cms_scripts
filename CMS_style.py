@@ -1,16 +1,21 @@
 import ROOT
 
-def CMS_style(type="1D"):
+def CMS_style(type="1D", ps_scale=2, axis_maxdigits=3):
     """Set CMS Style
     type: "1D" or "2D", Default: "1D"
+    ps_scale: line width in PS graphics, eps, pdf, svg, etc
+                Default: 2
+    axis_maxdigits: max number of digits,
+                    before switching to exponents
+                    Default: 3
     """
 
     CMS_style = ROOT.TStyle("CMS_style", "CMS Style for Plots")
-    ROOT.TGaxis().SetMaxDigits(4)
+    ROOT.TGaxis().SetMaxDigits(axis_maxdigits)
 
     # Line Scale for PS graphics,
     # eps, pdf, svg, etc.
-    CMS_style.SetLineScalePS(1)
+    CMS_style.SetLineScalePS(ps_scale)
 
     CMS_style.SetCanvasBorderMode(0)
     CMS_style.SetCanvasColor(ROOT.kWhite)

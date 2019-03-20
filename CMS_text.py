@@ -1,8 +1,11 @@
 import ROOT
 
-def CMS_text(pad):
+def CMS_text(pad, posx_scale=2.2):
     """Insert text outside frame, in upper-left
-    pad: pad or canvas"""
+    pad: pad or canvas
+    posx_scale: positioning of CMS text in x
+                Default: 2.2
+    """
     H = pad.GetWh()
     W = pad.GetWw()
     l = pad.GetLeftMargin()
@@ -27,7 +30,7 @@ def CMS_text(pad):
     extra_text_font = 52
     extra_text_size = 0.03
 
-    posx = 1.7*l
+    posx = posx_scale*l
     posy = 1 - 0.9*t
     
     latex.SetTextAlign(31)
