@@ -39,7 +39,7 @@ def clone_hist(h_hist_, keys):
 
 def draw_hist_1D(canvas, hists, colors, legend_entries, legX1=0.75, legY1=0.75, legX2=0.9, legY2=0.85, 
                  textX=0.5, textY=0.8, text="", textSize=0.03, showStats=False, logY=False, normalize=False, 
-                 drawOptions="", legend_markers=""):
+                 normScale=1, drawOptions="", legend_markers="", suppressYtitle=False):
     
     if isinstance(legend_markers, str): 
         if len(legend_markers) > 0:
@@ -80,11 +80,15 @@ def draw_hist_1D(canvas, hists, colors, legend_entries, legX1=0.75, legY1=0.75, 
 
     for h_ in hists:
         if normalize:
-            norm_ = h_.DrawNormalized(h_.GetOption() + " same")
+            norm_ = h_.DrawNormalized(h_.GetOption() + " same", normScale)
             ytitle = norm_.GetYaxis().GetTitle()
             if "Normalized" not in ytitle:
                 norm_.GetYaxis().SetTitle("[Normalized] " + ytitle)
+            if suppressYtitle:
+                norm_.GetYaxis().SetTitle("")
         else:
+            if suppressYtitle:
+                h_.GetYaxis().SetTitle("")
             h_.Draw(h_.GetOption() + " same")
     canvas.SetLogy(int(logY))
     return latex, legend
