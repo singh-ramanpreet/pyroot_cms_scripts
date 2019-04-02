@@ -92,3 +92,46 @@ def draw_hist_1D(canvas, hists, colors, legend_entries, legX1=0.75, legY1=0.75, 
             h_.Draw(h_.GetOption() + " same")
     canvas.SetLogy(int(logY))
     return latex, legend
+
+def draw_graph_1D(canvas, graphs, colors, legend_entries, legX1=0.75, legY1=0.75, legX2=0.9, legY2=0.85,
+                  textX=0.5, textY=0.8, text="", textSize=0.03, logY=False, drawOptions="",
+                  legend_markers="", suppressYtitle=False):
+
+    if isinstance(legend_markers, str):
+        if len(legend_markers) > 0:
+            legend_markers = [legend_markers]*len(graphs)
+        else:
+            legend_markers = ["l"]*len(graphs)
+
+    if isinstance(drawOptions, str):
+        if len(drawOptions) > 0:
+            drawOptions = [drawOptions]*len(graphs)
+        else:
+            drawOptions = ["C"]*len(graphs)
+
+    latex = ROOT.TLatex(textX, textY, text)
+    latex.SetNDC()
+    latex.SetTextFont(42)
+    latex.SetTextSize(textSize)
+
+    legend = ROOT.TLegend(legX1, legY1, legX2, legY2)
+    legend.SetBorderSize(0)
+    legend.SetFillStyle(0)
+    legend.SetTextFont(42)
+
+    for i in range(len(graphs)):
+        graph = graphs[i]
+        color = colors[i]
+        legend_entry = legend_entries[i]
+        graph.SetLineColor(color)
+        graph.SetLineWidth(2)
+        legend.AddEntry(graph, legend_entry, legend_markers[i])
+
+        if suppressYtitle:
+            graph.GetYaxis().SetTitle("")
+        if i == 0:
+            graph.Draw("A" + drawOptions[i])
+        else:
+            graph.Draw(drawOptions[i])
+    canvas.SetLogy(int(logY))
+    return latex, legend
