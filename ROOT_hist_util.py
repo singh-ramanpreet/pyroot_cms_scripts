@@ -135,3 +135,53 @@ def draw_graph_1D(canvas, graphs, colors, legend_entries, legX1=0.75, legY1=0.75
             graph.Draw(drawOptions[i])
     canvas.SetLogy(int(logY))
     return latex, legend
+
+def draw_efficiency_1D(canvas, Tefficiency_objects, colors, legend_entries,
+                       YaxisMax=1.1, YaxisMin=0.01,
+                       markerstyle="", fillstyle="", linewidth="",
+                       legX1=0.2, legY1=0.8, legX2=0.35, legY2=0.9,
+                       textX=0.5, textY=0.85, text="", textSize=0.05,
+                       drawOptions="", legend_markers="",
+                       canvasTitle="", titleX="Title X", titleY="Title Y"):
+
+    legend = ROOT.TLegend(legX1, legY1, legX2, legY2)
+    legend.SetBorderSize(0)
+    legend.SetFillStyle(0)
+    legend.SetTextFont(42)
+
+    latex = ROOT.TLatex(textX, textY, text)
+    latex.SetNDC()
+    latex.SetTextFont(42)
+    latex.SetTextSize(textSize)
+
+    if isinstance(drawOptions, str):
+        if drawOptions == "":
+            drawOptions = ["P"]*len(Tefficiency_objects)
+        else:
+            drawOptions = [drawOptions]*len(Tefficiency_objects)
+
+    if isinstance(legend_markers, str):
+        if legend_markers == "":
+            legend_markers = ["L"]*len(Tefficiency_objects)
+        else:
+            legend_markers = [legend_markers]*len(Tefficiency_objects)
+
+    title = canvasTitle + ";" + titleX + ";" + titleY
+
+    for i, effPlot in enumerate(Tefficiency_objects):
+        effPlot.SetLineColor(colors[i])
+        if markerstyle != "": effPlot.SetMarkerStyle(markerstyle)
+        if fillstyle   != "": effPlot.SetFillStyle(fillstyle)
+        if linewidth   != "": effPlot.SetLineWidth(linewidth)
+        legend.AddEntry(effPlot, legend_entries[i], legend_markers[i])
+
+        effPlot.SetTitle(title)
+        if i == 0:
+            graph = effPlot.CreateGraph("AP")
+            graph.Draw("A" + drawOptions[i])
+            graph.GetHistogram().SetMaximum(YaxisMax)
+            graph.GetHistogram().SetMinimum(YaxisMin)
+        else:
+            effPlot.Draw("same " + drawOptions[i])
+
+    return legend, latex
