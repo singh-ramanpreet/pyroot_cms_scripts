@@ -1,11 +1,19 @@
 # ROOT Canvas CMS Styling with Python
 
+### Installation
+----------------
+Clone this repository, then navigate to the directory and install using `pip`.
+```bash
+git clone https://github.com/singh-ramanpreet/pyroot_cms_scripts.git
+cd pyroot_cms_scripts
+pip install --user .
+```
+
 ### Usage
 ---------
 First import the functions,
 ```python
-from CMS_style import CMS_style
-from CMS_text import CMS_text
+from pyroot_cms_scripts import CMS_style, CMS_text
 ```
 then after creating the `TCanvas` instance `canvas = ROOT.TCanvas()`,
 
@@ -13,19 +21,3 @@ then after creating the `TCanvas` instance `canvas = ROOT.TCanvas()`,
 add `CMS_style("1D")` or `CMS_style("2D")`.
 
 2. For CMS text in upper left outside frame, use `CMS_text(canvas)`. Change the text in `CMS_text.py` file manually.
-
-### Using it in multiple places
-----------
-Clone this repository somewhere in your working area,
-```bash
-cd /path/to/workingDir
-git clone https://github.com/singh-ramanpreet/pyroot-cms-scripts.git
-```
-
-then in the your python script,
-```python
-import sys
-sys.path.append("/path/to/workingDir/pyroot-cms-scripts")
-```
-
-Now you can proceed with steps described in Usage.
