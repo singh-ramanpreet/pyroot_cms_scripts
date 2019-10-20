@@ -4,6 +4,7 @@ def CMS_text(
     pad, 
     draw_cms=True,
     cms_text="CMS",
+    cms_text_scale=1.0,
     cms_text_location="inside left",
     cms_pos_x_scale=1.0,
     cms_pos_y_scale=1.0,
@@ -85,7 +86,7 @@ def CMS_text(
 
 
     cms_text_font = 61
-    cms_text_size = 0.7 * pad_top_margin
+    cms_text_size = cms_text_scale * 0.7 * pad_top_margin
 
     if cms_text_location == "outside left":
 
