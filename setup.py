@@ -5,7 +5,7 @@ with open("README.md", "r") as f:
 
 setuptools.setup(
     name="pyroot_cms_scripts",
-    version="0.2",
+    version="0.3",
     author="Ramanpreet Singh",
     author_email="",
     description="CMS Style and Text for pyROOT",
