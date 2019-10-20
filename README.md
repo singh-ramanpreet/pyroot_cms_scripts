@@ -116,3 +116,13 @@ CMS_text(canvas, cms_text_location="inside left", draw_extra_text=True, extra_te
 CMS_text(canvas, draw_cms=False, draw_extra_text=True, extra_text_location="inside left below", extra_text="#font[42]{arxiv:YYMM.NNNNN}")
 ```
 ![](test/7.png)
+
+```python
+...
+upper_pad = ratio.GetUpperPad()
+upper_pad.cd()
+...
+CMS_text(upper_pad, cms_text_scale=1.2, cms_text_location="inside left", draw_extra_text=True, extra_text_location="inside left right", extra_text="#scale[1.1]{Preliminary}", extra_text_pos_x_scale=1.02, draw_lumi_text=True, lumi_text="#scale[1.1]{3000 fb^{-1} (14 TeV)}")
+CMS_text(upper_pad, draw_cms=False, draw_extra_text=True, extra_text_location="inside left below", extra_text="#scale[1.1]{#font[42]{arxiv:YYMM.NNNNN}}", extra_text_pos_y_scale=1.05)
+```
+![](test/8.png)

@@ -84,4 +84,40 @@ CMS_text(canvas, cms_text_location="inside left", draw_extra_text=True, extra_te
 CMS_text(canvas, draw_cms=False, draw_extra_text=True, extra_text_location="inside left below", extra_text="#font[42]{arxiv:YYMM.NNNNN}")
 canvas.Print("7.png")
 
+canvas = ROOT.TCanvas()
+
+h5 = stack.GetStack().Last()
+
+h4.SetTitle(stack.GetTitle())
+h4.SetMaximum(maxY * 1.2)
+
+ratio = ROOT.TRatioPlot(h4, h5)
+
+ratio.SetH1DrawOpt("axis")
+ratio.SetH2DrawOpt("axis")
+ratio.SetGraphDrawOpt("p")
+
+ratio.SetSeparationMargin(0)
+ratio.SetLeftMargin(canvas.GetLeftMargin())
+ratio.SetRightMargin(canvas.GetRightMargin())
+ratio.SetUpTopMargin(0.075)
+ratio.SetLowBottomMargin(0.40)
+
+ratio.Draw("grid hideup")
+
+ratio.GetLowYaxis().SetNdivisions(205)
+ratio.GetLowerRefYaxis().SetTitle("Ratio")
+ratio.GetLowerRefGraph().SetMinimum(-0.9)
+ratio.GetLowerRefGraph().SetMaximum(2.9)
+ratio.GetLowerRefGraph().SetMarkerStyle(6)
+
+upper_pad = ratio.GetUpperPad()
+upper_pad.cd()
+stack.Draw("pfc same")
+h4.Draw("x0 e1 same")
+
+CMS_text(upper_pad, cms_text_scale=1.2, cms_text_location="inside left", draw_extra_text=True, extra_text_location="inside left right", extra_text="#scale[1.1]{Preliminary}", extra_text_pos_x_scale=1.02, draw_lumi_text=True, lumi_text="#scale[1.1]{3000 fb^{-1} (14 TeV)}")
+CMS_text(upper_pad, draw_cms=False, draw_extra_text=True, extra_text_location="inside left below", extra_text="#scale[1.1]{#font[42]{arxiv:YYMM.NNNNN}}", extra_text_pos_y_scale=1.05)
+canvas.Print("8.png")
+
 input("Press any key to exit ... ")
