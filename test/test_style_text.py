@@ -6,6 +6,8 @@ from pyroot_cms_scripts import CMS_style
 
 from pyroot_cms_scripts import CMS_text
 
+CMS_style.cd()
+
 f1 = ROOT.TF1("f1", "gaus", -5, 5)
 f1.SetParameters(5, 0, 1.5)
 
@@ -33,15 +35,12 @@ h4.SetMarkerStyle(8)
 maxY = max(stack.GetMaximum(), h4.GetMaximum())
 stack.SetMaximum(maxY * 1.2)
 
-CMS_style("1D")
 canvas = ROOT.TCanvas()
 stack.Draw("pfc")
 h4.Draw("x0 e1 same")
 CMS_text(canvas, cms_text_location="outside left", draw_extra_text=True, extra_text_location="outside left right", draw_lumi_text=True)
 canvas.Print("1.png")
 
-
-CMS_style("1D")
 canvas = ROOT.TCanvas()
 stack.Draw("pfc")
 h4.Draw("x0 e1 same")
@@ -49,14 +48,13 @@ CMS_text(canvas, cms_text_location="inside left", draw_extra_text=True, extra_te
 canvas.Print("2.png")
 
 
-CMS_style("1D")
 canvas = ROOT.TCanvas()
 stack.Draw("pfc")
 h4.Draw("x0 e1 same")
 CMS_text(canvas, cms_text_location="inside left", draw_extra_text=True, extra_text_location="inside left right")
 canvas.Print("3.png")
 
-CMS_style("1D")
+
 canvas = ROOT.TCanvas()
 stack.Draw("pfc")
 h4.Draw("x0 e1 same")
@@ -64,7 +62,6 @@ CMS_text(canvas, cms_text_location="inside center", draw_extra_text=True, extra_
 canvas.Print("4.png")
 
 
-CMS_style("1D")
 canvas = ROOT.TCanvas()
 stack.Draw("pfc")
 h4.Draw("x0 e1 same")
@@ -72,7 +69,6 @@ CMS_text(canvas, cms_text_location="inside right", draw_extra_text=True, extra_t
 canvas.Print("5.png")
 
 
-CMS_style("1D")
 canvas = ROOT.TCanvas()
 stack.Draw("pfc")
 h4.Draw("x0 e1 same")
@@ -80,7 +76,7 @@ CMS_text(canvas, cms_text_location="inside left", draw_extra_text=True, extra_te
 CMS_text(canvas, draw_cms=False, draw_extra_text=True, extra_text_location="outside center", extra_text="#font[42]{arxiv:YYMM.NNNNN}")
 canvas.Print("6.png")
 
-CMS_style("1D")
+
 canvas = ROOT.TCanvas()
 stack.Draw("pfc")
 h4.Draw("x0 e1 same")

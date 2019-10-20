@@ -13,7 +13,7 @@ def CMS_text(
     extra_text_pos_x_scale=1.0,
     extra_text_pos_y_scale=1.0,
     draw_lumi_text=False,
-    lumi_text="#scale[0.95]{3000 fb^{-1} (14 TeV)}",
+    lumi_text="#scale[1.0]{3000 fb^{-1} (14 TeV)}",
     lumi_text_pos_x_scale=1.0,
     lumi_text_pos_y_scale=1.0
 ):
@@ -85,30 +85,30 @@ def CMS_text(
 
 
     cms_text_font = 61
-    cms_text_size = 0.6 * pad_top_margin
+    cms_text_size = 0.7 * pad_top_margin
 
     if cms_text_location == "outside left":
 
-        cms_text_pos_x = cms_pos_x_scale * 1.1 * pad_left_margin
-        cms_text_pos_y = 1 - cms_pos_y_scale * 0.53 * pad_top_margin
+        cms_text_pos_x = cms_pos_x_scale * 1.0 * pad_left_margin
+        cms_text_pos_y = 1 - cms_pos_y_scale * 0.40 * pad_top_margin
         cms_text_align = 13
 
     if cms_text_location == "inside left":
 
-        cms_text_pos_x = cms_pos_x_scale * 1.25 * pad_left_margin
-        cms_text_pos_y = 1 - cms_pos_y_scale * 1.40 * pad_top_margin
+        cms_text_pos_x = cms_pos_x_scale * 1.20 * pad_left_margin
+        cms_text_pos_y = 1 - cms_pos_y_scale * 1.50 * pad_top_margin
         cms_text_align = 13
 
     if cms_text_location == "inside center":
 
-        cms_text_pos_x = cms_pos_x_scale * 4.05 * pad_left_margin
-        cms_text_pos_y = 1 - cms_pos_y_scale * 1.40 * pad_top_margin
+        cms_text_pos_x = cms_pos_x_scale * 3.70 * pad_left_margin
+        cms_text_pos_y = 1 - cms_pos_y_scale * 1.50 * pad_top_margin
         cms_text_align = 23
 
     if cms_text_location == "inside right":
 
-        cms_text_pos_x = cms_pos_x_scale * 6.85 * pad_left_margin
-        cms_text_pos_y = 1 - cms_pos_y_scale * 1.40 * pad_top_margin
+        cms_text_pos_x = cms_pos_x_scale * 6.20 * pad_left_margin
+        cms_text_pos_y = 1 - cms_pos_y_scale * 1.50 * pad_top_margin
         cms_text_align = 33
 
     if draw_cms:
@@ -119,49 +119,49 @@ def CMS_text(
     
     
     extra_text_font = 52
-    extra_text_size = 0.4 * pad_top_margin
+    extra_text_size = 0.5 * pad_top_margin
 
     if extra_text_location == "outside left right":
 
-        extra_text_pos_x = extra_text_pos_x_scale * 1.85 * pad_left_margin
+        extra_text_pos_x = extra_text_pos_x_scale * 1.60 * pad_left_margin
         extra_text_align = 13
-        extra_text_pos_y = 1 - extra_text_pos_y_scale * 0.63 * pad_top_margin
+        extra_text_pos_y = 1 - extra_text_pos_y_scale * 0.55 * pad_top_margin
 
 
     if "inside left" in extra_text_location:
 
         if "below" in extra_text_location:
 
-            extra_text_pos_x = extra_text_pos_x_scale * 1.25 * pad_left_margin
+            extra_text_pos_x = extra_text_pos_x_scale * 1.20 * pad_left_margin
             extra_text_align = 13
-            extra_text_pos_y = 1 - extra_text_pos_y_scale * 1.90 * pad_top_margin
+            extra_text_pos_y = 1 - extra_text_pos_y_scale * 2.10 * pad_top_margin
 
         if "right" in extra_text_location:
 
-            extra_text_pos_x = extra_text_pos_x_scale * 2.00 * pad_left_margin
+            extra_text_pos_x = extra_text_pos_x_scale * 1.80 * pad_left_margin
             extra_text_align = 13
-            extra_text_pos_y = 1 - extra_text_pos_y_scale * 1.5 * pad_top_margin
+            extra_text_pos_y = 1 - extra_text_pos_y_scale * 1.65 * pad_top_margin
 
 
     if extra_text_location == "inside center below":
 
-        extra_text_pos_x = extra_text_pos_x_scale * 4.05 * pad_left_margin
+        extra_text_pos_x = extra_text_pos_x_scale * 3.70 * pad_left_margin
         extra_text_align = 23
-        extra_text_pos_y = 1 - extra_text_pos_y_scale * 1.90 * pad_top_margin
+        extra_text_pos_y = 1 - extra_text_pos_y_scale * 2.10 * pad_top_margin
 
 
     if extra_text_location == "inside right below":
 
-        extra_text_pos_x = extra_text_pos_x_scale * 6.85 * pad_left_margin
+        extra_text_pos_x = extra_text_pos_x_scale * 6.20 * pad_left_margin
         extra_text_align = 33
-        extra_text_pos_y = 1 - extra_text_pos_y_scale * 1.90 * pad_top_margin
+        extra_text_pos_y = 1 - extra_text_pos_y_scale * 2.10 * pad_top_margin
 
 
     if extra_text_location == "outside center":
 
-        extra_text_pos_x = extra_text_pos_x_scale * 4.05 * pad_left_margin
+        extra_text_pos_x = extra_text_pos_x_scale * 3.70 * pad_left_margin
         extra_text_align = 23
-        extra_text_pos_y = 1 - extra_text_pos_y_scale * 0.53 * pad_top_margin       
+        extra_text_pos_y = 1 - extra_text_pos_y_scale * 0.40 * pad_top_margin
 
     if draw_extra_text:
         latex.SetTextAlign(extra_text_align)
@@ -170,11 +170,11 @@ def CMS_text(
         latex.DrawLatex(extra_text_pos_x, extra_text_pos_y, extra_text)
         
     lumi_text_font = 42
-    lumi_text_size = 0.55 * pad_top_margin
+    lumi_text_size = 0.7 * pad_top_margin
     lumi_text_align = 31
 
-    lumi_text_pos_x = lumi_text_pos_x_scale * 7.1 * pad_left_margin
-    lumi_text_pos_y = 1 - lumi_text_pos_y_scale * 0.88 * pad_top_margin
+    lumi_text_pos_x = lumi_text_pos_x_scale * 6.4 * pad_left_margin
+    lumi_text_pos_y = 1 - lumi_text_pos_y_scale * 0.8 * pad_top_margin
     
     if draw_lumi_text:
         latex.SetTextAlign(lumi_text_align)
