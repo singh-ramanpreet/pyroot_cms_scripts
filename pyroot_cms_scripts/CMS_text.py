@@ -28,8 +28,10 @@ def CMS_text(
         draws "CMS" text (default is True)
     cms_text : str, optional
         cms text (default is "CMS")
+    cms_text_scale : float, optional
+        scale cms_text (default is 1.0)
     cms_text_location : str, optional
-        location of cms_text, (default is "inside left")
+        location of cms_text (default is "inside left")
         options, "outside left"
                  "inside left"
                  "inside center"

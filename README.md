@@ -18,7 +18,11 @@ from pyroot_cms_scripts import CMS_style, CMS_text
 ```
 ### CMS_style
 
-Add `CMS_style("1D")` or `CMS_style("2D")` before or after creating instance of `TCanvas` like, `canvas = ROOT.TCanvas()`. That's it.
+`CMS_style` is instance of `ROOT.TStyle`, to update the changes in properties you will have to do `CMS_style.cd()`.
+
+Just doing `CMS_style.cd()` will activate `CMS_style`. If you are reading histograms from a file, you need to do `ROOT.gROOT.ForceStyle()` before reading for this to work.
+
+Alternatively, use can do `hist.UseCurrentStyle()` on every histograms.
 
 ### CMS_text
 
@@ -34,8 +38,10 @@ Below are keyword arguments and their default values, followed by some examples.
         draws "CMS" text (default is True)
     cms_text : str, optional
         cms text (default is "CMS")
+    cms_text_scale : float, optional
+        scale cms_text (default is 1.0)
     cms_text_location : str, optional
-        location of cms_text, (default is "inside left")
+        location of cms_text (default is "inside left")
         options, "outside left"
                  "inside left"
                  "inside center"
