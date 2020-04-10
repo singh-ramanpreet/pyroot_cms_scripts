@@ -5,7 +5,7 @@
 Clone this repository, then navigate to the directory and install using `pip`.
 ```bash
 git clone https://github.com/singh-ramanpreet/pyroot_cms_scripts.git
-git checkout 0.2
+git checkout 0.3.1
 cd pyroot_cms_scripts
 pip install --user .
 ```
